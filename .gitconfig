@@ -1,0 +1,58 @@
+[core]
+  editor = notepad
+  autocrlf = true
+  ignorecase = true
+[alias]
+  co = checkout
+  br = branch
+  cm = commit
+  mt = mergetool
+  st = status
+  df = difftool
+  h = log --graph --pretty=format:'%Cred%h%Creset %Cgreen%ar%Creset %C(yellow)%d%Creset %s %C(green)<%an>%Creset' --abbrev-commit
+  diffex = !git diff > C:/temp/temp.diff | start notepad C:/temp/temp.diff
+  diffex-c = !git diff --cached > C:/temp/temp.diff | start notepad C:/temp/temp.diff
+  diffex-all = !git diff HEAD > C:/temp/temp.diff | start st C:/temp/temp.diff
+  short-log = log --pretty=format:'%h: %s'
+  cobr = checkout -b
+  stepback = reset HEAD^
+  outgoing=!git fetch && git log --abbrev-commit FETCH_HEAD..master
+  incoming=!git fetch && git log --abbrev-commit master..FETCH_HEAD
+  out=!git fetch && git log --abbrev-commit --pretty=oneline FETCH_HEAD..master
+  in=!git fetch && git log --abbrev-commit --pretty=oneline master..FETCH_HEAD
+  cdiff = diff --color-words
+  mergec = "! git merge $1 && git br -d $2"
+[diff]
+  tool = bc4
+  guitool = beyondcompare4
+[difftool "bc4"]
+  path = c:/program files/beyond compare 4/bcomp.exe
+  cmd = \"c:/program files/beyond compare 4/bcomp.exe\" \"$LOCAL\" \"$REMOTE\"
+[merge]
+  tool = bc4
+[mergetool "bc4"]
+  path = c:/program files/beyond compare 4/bcomp.exe
+  cmd = \"c:/program files/beyond compare 4/bcomp.exe\" \"$LOCAL\" \"$REMOTE\" \"$BASE\" \"$MERGED\"
+  trustExitCode = true
+[difftool]
+  prompt = false
+[credential]
+  helper = !\"C:/Program Files (x86)/GitExtensions/GitCredentialWinStore/git-credential-winstore.exe\"
+[difftool "beyondcompare4"]
+  path = c:/program files/beyond compare 4/bcomp.exe
+  cmd = \"c:/program files/beyond compare 4/bcomp.exe\" \"$LOCAL\" \"$REMOTE\"
+[mergetool]
+  keepBackup = false
+[color]
+  diff = auto
+  status = auto
+  branch = auto
+  interactive = auto
+  ui = true
+  pager = true
+[color "status"]
+  added = green bold
+  changed = red bold
+  untracked = yellow bold
+[color "branch"]
+  remote = yellow
